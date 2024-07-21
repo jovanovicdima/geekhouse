@@ -1,15 +1,15 @@
 <script lang="ts">
+    import { enhance } from '$app/forms';
   import type { ActionData } from './$types'
 
   export let form: ActionData
   export let data
 
-  console.log(data.professions)
 </script>
 
 <h1>Register</h1>
 
-<form action="?/register" method="POST">
+<form action="?/register" method="POST" use:enhance>
   <div>
     <label for="username">Username</label>
     <input type="username" name="username" id="username" min="3" max="15" required>
@@ -34,13 +34,18 @@
     <label for="password">Password</label>
     <input type="password" name="password" id="password" required>
   </div>
-  <div>
-    <label for="professions">Profession</label>
-    <input type="password" name="password" id="password" required>
-  </div>
 
-  {#if form?.user}
-    <p>errorrrr</p>
+  {#if form?.invalid}
+    <p>Something went wrong. Please try again.</p>
+  {/if}
+
+  
+  {#if form?.email}
+    <p>Email is already taken.</p>
+  {/if}
+
+  {#if form?.username}
+    <p>Username is already taken.</p>
   {/if}
 
   <button type="submit">Register</button>
