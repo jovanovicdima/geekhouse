@@ -2,7 +2,7 @@ import { redirect } from '@sveltejs/kit'
 import type { PageServerLoad, Actions } from './$types'
 
 export const load: PageServerLoad = async () => {
-  redirect(302, '/')
+  redirect(302, '/login')
 }
 
 export const actions: Actions = {

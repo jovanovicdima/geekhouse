@@ -1,5 +1,14 @@
 import { db } from '$lib/database'
 import { fail, redirect, type Actions } from '@sveltejs/kit'
+import type { PageServerLoad } from './$types'
+
+export const prerender = true
+
+export const load: PageServerLoad = async (event) => {
+  if(event.locals.user) {
+    redirect(302, '/')
+  }
+}
 
 export const actions: Actions = {
   login: async ({ cookies, request }) => {

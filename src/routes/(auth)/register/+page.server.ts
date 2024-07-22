@@ -1,10 +1,15 @@
 import bcrypt from 'bcrypt'
-import { error, fail, redirect } from '@sveltejs/kit'
+import { fail, redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad} from './$types'
 import { db } from '$lib/database'
 import { Roles } from '$lib/roles'
 
-export const load: PageServerLoad = async () => {
+export const prerender = true
+
+export const load: PageServerLoad = async (event) => {
+  if(event.locals.user) {
+    redirect(302, '/')
+  }
 }
 
 export const actions: Actions = {
