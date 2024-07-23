@@ -4,8 +4,6 @@ import type { Actions, PageServerLoad} from './$types'
 import { db } from '$lib/database'
 import { Roles } from '$lib/roles'
 
-export const prerender = true
-
 export const load: PageServerLoad = async (event) => {
   if(event.locals.user) {
     redirect(302, '/')

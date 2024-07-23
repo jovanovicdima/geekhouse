@@ -8,7 +8,8 @@ declare global {
         username: string,
         email: string,
         role: string
-      }
+      },
+      locale: string
     }
 		// interface PageData {}
 		// interface PageState {}
